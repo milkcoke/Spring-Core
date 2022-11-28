@@ -19,7 +19,7 @@ public class OrderServiceImpl implements OrderService{
     @Override
     public Order createOrder(Long memberId, String itemName, int itemPrice) {
         var member = memberRepository.findById(memberId);
-        var discountPrice = discountPolicy.discount(member, itemPrice);
+        var discountPrice = discountPolicy.getDiscountPrice(member, itemPrice);
 
         return new Order(memberId, itemName, itemPrice, discountPrice);
     }
