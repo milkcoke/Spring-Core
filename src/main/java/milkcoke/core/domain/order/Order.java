@@ -1,4 +1,4 @@
-package milkcoke.core.order;
+package milkcoke.core.domain.order;
 
 public class Order {
 
