@@ -1,14 +1,22 @@
 package milkcoke.core;
 
-import milkcoke.core.domain.member.Member;
 import milkcoke.core.domain.member.Grade;
-import milkcoke.core.repository.member.MemoryMemberRepository;
+import milkcoke.core.domain.member.Member;
 import milkcoke.core.service.member.MemberService;
-import milkcoke.core.service.member.MemberServiceImpl;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
 public class MemberApp {
     public static void main(String[] args) {
-        MemberService memberService = new MemberServiceImpl(new MemoryMemberRepository());
+
+        // 모든 객체 Bean 을 관리함
+        // Spring Container 에 집어 넣어 관리함.
+        ApplicationContext applicationContext = new AnnotationConfigApplicationContext(AppConfig.class);
+        // 메서드 이름으로 name 이 설정되어있음. (key: 메소드명, value: 생성된 객체)
+        MemberService memberService = applicationContext.getBean("memberService", MemberService.class);
+
+//        MemberService memberService = new MemberServiceImpl(new MemoryMemberRepository());
+
         Member member = new Member(1L, "memberA", Grade.VIP);
         memberService.join(member);
 
