@@ -4,8 +4,10 @@ import milkcoke.core.domain.discount.DiscountPolicy;
 import milkcoke.core.domain.order.Order;
 import milkcoke.core.repository.member.MemberRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 // order service 는 할인에 대한 것을 아무것도 알지 몬하는 상태다.
+@Service
 public class OrderServiceImpl implements OrderService{
     // 구현체가 아닌 Interface (역할) 에만 의존해야한다. => DIP 원칙 준수
     private final MemberRepository memberRepository;
