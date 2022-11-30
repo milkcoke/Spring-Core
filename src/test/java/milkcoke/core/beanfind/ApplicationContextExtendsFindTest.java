@@ -42,7 +42,7 @@ public class ApplicationContextExtendsFindTest {
     }
 
     @Test
-    @DisplayName("부모 타입 조회시, 자식이 둘 이상 있으면 빈 이름으로 유니크함을 보장할 수 있다.")
+    @DisplayName("구현 타입으로 조회")
     void findBeanBySubType() {
         var bean = ac.getBean(FixDiscountPolicy.class);
         assertThat(bean).isInstanceOf(FixDiscountPolicy.class);
