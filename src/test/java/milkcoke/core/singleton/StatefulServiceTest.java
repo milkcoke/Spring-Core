@@ -30,6 +30,6 @@ class StatefulServiceTest {
 
         // 사용자A가 주문 금액 조회
         // 같은 인스턴스 객체에서 공유 변수 'price' 를 수정했으므로 가장 나중에 발생한 트랜잭션인 B의 결과가 반영됨.
-        assertThat(statefulService1.getPrice()).isEqualTo(10_000);
+        assertThat(statefulService1.getPrice()).isNotEqualTo(10_000);
     }
 }
