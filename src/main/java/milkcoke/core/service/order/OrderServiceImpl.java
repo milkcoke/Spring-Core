@@ -1,6 +1,6 @@
 package milkcoke.core.service.order;
 
-import milkcoke.core.discount.DiscountPolicy;
+import milkcoke.core.domain.discount.DiscountPolicy;
 import milkcoke.core.domain.order.Order;
 import milkcoke.core.repository.member.MemberRepository;
 import org.springframework.beans.factory.annotation.Autowired;

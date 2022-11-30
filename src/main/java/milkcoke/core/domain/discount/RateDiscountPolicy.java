@@ -1,19 +1,17 @@
-package milkcoke.core.discount;
+package milkcoke.core.domain.discount;
 
 import milkcoke.core.domain.member.Grade;
 import milkcoke.core.domain.member.Member;
 
-public class FixDiscountPolicy implements DiscountPolicy {
+public class RateDiscountPolicy implements DiscountPolicy {
 
-    private final int discountFixAmount = 1_000;
+    private final int discountPercent = 10;
 
     @Override
     public int getDiscountPrice(Member member, int price) {
         if (member.getGrade() == Grade.VIP) {
-            return discountFixAmount;
-        } else {
-            return 0;
+            return (int)(price * discountPercent * 0.01);
         }
+        return 0;
     }
-
 }
