@@ -19,7 +19,7 @@ public class AutoAppConfig {
 
 ```
 
-#### Configurations
+### Configurations
 아래 옵션이 지정되지 않은 경우 \
 `@ComponentScan` 을 붙인 해당 패키지를 시작으로 예하 모든 패키지를 스캔한다.
 
@@ -30,4 +30,15 @@ public class AutoAppConfig {
 여러 시작 위치를 지정할 수도 있음.
 - `basePackageClasses` \
 지정한 클래스의 패키지를 탐색 시작 위치로 지정
+
+
+### 빈 이름 중복 충돌 처리
+> 📝 Bean 이름은 항상 Unique 하도록 보장하라.
+
+Spring bean 이름에 중복이 발생한 경우
+> "Consider renaming one of the beans or enabling overriding by setting spring.main.allow-bean-definition-overriding=true"
+
+ 수동 등록 빈이 자동 등록 빈에 비해 우선권을 가지고 오버라이딩 해주나, 기본적으로 중복 발생시 SpringBoot App 실행시 오류가 발생하도록 한다. \
+(빈 자동 vs 수동 등록 충돌은 개발자의 의도 밖에 있는 일인 경우가 매우 많기 때문이다.)
+
 
