@@ -1,9 +1,10 @@
 package milkcoke.core.repository.member;
 
 import milkcoke.core.domain.member.Member;
+import org.springframework.stereotype.Repository;
 
 import java.util.concurrent.ConcurrentHashMap;
-
+@Repository
 public class MemoryMemberRepository implements MemberRepository {
     private static ConcurrentHashMap<Long, Member> store  = new ConcurrentHashMap<>();
 

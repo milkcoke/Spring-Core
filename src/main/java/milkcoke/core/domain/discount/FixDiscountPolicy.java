@@ -1,4 +1,4 @@
-package milkcoke.core.discount;
+package milkcoke.core.domain.discount;
 
 import milkcoke.core.domain.member.Grade;
 import milkcoke.core.domain.member.Member;

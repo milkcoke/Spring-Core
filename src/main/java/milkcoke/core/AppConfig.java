@@ -1,7 +1,7 @@
 package milkcoke.core;
 
-import milkcoke.core.discount.DiscountPolicy;
-import milkcoke.core.discount.FixDiscountPolicy;
+import milkcoke.core.domain.discount.DiscountPolicy;
+import milkcoke.core.domain.discount.FixDiscountPolicy;
 import milkcoke.core.repository.member.MemberRepository;
 import milkcoke.core.repository.member.MemoryMemberRepository;
 import milkcoke.core.service.member.MemberService;

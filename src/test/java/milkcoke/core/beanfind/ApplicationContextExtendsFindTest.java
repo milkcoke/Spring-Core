@@ -1,8 +1,8 @@
 package milkcoke.core.beanfind;
 
-import milkcoke.core.discount.DiscountPolicy;
-import milkcoke.core.discount.FixDiscountPolicy;
-import milkcoke.core.discount.RateDiscountPolicy;
+import milkcoke.core.domain.discount.DiscountPolicy;
+import milkcoke.core.domain.discount.FixDiscountPolicy;
+import milkcoke.core.domain.discount.RateDiscountPolicy;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.NoUniqueBeanDefinitionException;

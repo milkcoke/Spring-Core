@@ -1,8 +1,10 @@
-package milkcoke.core.discount;
+package milkcoke.core.domain.discount;
 
 import milkcoke.core.domain.member.Grade;
 import milkcoke.core.domain.member.Member;
+import org.springframework.stereotype.Component;
 
+@Component
 public class RateDiscountPolicy implements DiscountPolicy {
 
     private final int discountPercent = 10;
