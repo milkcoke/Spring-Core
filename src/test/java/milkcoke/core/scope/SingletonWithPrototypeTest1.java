@@ -4,11 +4,12 @@ import jakarta.annotation.PostConstruct;
 import jakarta.annotation.PreDestroy;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import org.springframework.beans.factory.ObjectProvider;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
+
+import javax.inject.Provider;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -36,8 +37,10 @@ public class SingletonWithPrototypeTest1 {
         assertThat(count1).isEqualTo(1);
 
         var clientBean2 = ac.getBean(ClientBean.class);
-        var count2 = clientBean2.addAndGetCount();
-        assertThat(count2).isEqualTo(2);
+        assertThat(clientBean1).isNotSameAs(clientBean2);
+
+//        var count2 = clientBean2.addAndGetCount();
+//        assertThat(count2).isEqualTo(1);
     }
 
     @Component
@@ -49,21 +52,22 @@ public class SingletonWithPrototypeTest1 {
         // DI 대신 Dependency Lookup (DL) 을 이용하는 방법
         // ObjectProvider 를 활용한다.
         // ObjectProvider 는 찾아주는 과정을 도와주는 인터페이스일 뿐이다.
-        private final ObjectProvider<PrototypeBean> prototypeBeanObjectProvider;
+        private final Provider<PrototypeBean> prototypeProvider;
 
         @Autowired
-        public ClientBean(ObjectProvider<PrototypeBean> prototypeBeanObjectProvider) {
-            this.prototypeBeanObjectProvider = prototypeBeanObjectProvider;
+        public ClientBean(Provider<PrototypeBean> prototypeProvider) {
+            this.prototypeProvider = prototypeProvider;
         }
 
         public int addAndGetCount() {
             // DL 만 사용.
             // 매번 ClientBean 에 주입될 PrototypeBean 을 찾아오기만 한다.
-            var prototypeBean = prototypeBeanObjectProvider.getObject();
+            var prototypeBean = prototypeProvider.get();
             prototypeBean.addCount();
             return prototypeBean.getCount();
         }
     }
+
 
     @Component
     @Scope("prototype")
@@ -87,5 +91,10 @@ public class SingletonWithPrototypeTest1 {
         public void destroy() {
             System.out.println("PrototypeBean.destroy called " + this);
         }
+
+//        @Override
+//        public PrototypeBean get() {
+//            return this;
+//        }
     }
 }
