@@ -2,7 +2,6 @@ package milkcoke.core.domain.discount;
 
 import milkcoke.core.domain.member.Grade;
 import milkcoke.core.domain.member.Member;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
 
 @Component
