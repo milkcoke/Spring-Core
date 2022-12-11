@@ -3,7 +3,6 @@ package milkcoke.core.web;
 import jakarta.servlet.http.HttpServletRequest;
 import lombok.RequiredArgsConstructor;
 import milkcoke.core.common.MyLogger;
-import org.springframework.beans.factory.ObjectProvider;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -12,7 +11,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 @RequiredArgsConstructor
 public class LogDemoController implements LogController {
     private final LogService logService;
-    private final ObjectProvider<MyLogger> myLoggerProvider;
+    private final MyLogger myLogger;
 
     @RequestMapping("logging-demo")
     // View template 없이 문자열 그대로 응답
@@ -20,7 +19,6 @@ public class LogDemoController implements LogController {
     @Override
     public String loggingDemo(HttpServletRequest httpServletRequest) {
         var reqUrl = httpServletRequest.getRequestURI();
-        var myLogger = myLoggerProvider.getObject();
         myLogger.setRequestUrl(reqUrl);
 
         myLogger.logging("Controller test");
