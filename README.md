@@ -2,6 +2,13 @@
 스프링 핵심 원리를 파헤쳐보자!
 
 
+## Configuration
+#### application.properties
+```text
+server.port=9000
+```
+
+
 ## Spring Container 등록
 
 ```java

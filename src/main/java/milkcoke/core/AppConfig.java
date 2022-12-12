@@ -9,11 +9,11 @@ import milkcoke.core.service.member.MemberServiceImpl;
 import milkcoke.core.service.order.OrderService;
 import milkcoke.core.service.order.OrderServiceImpl;
 import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.Configuration;
 
 // 일종의 기획자 역할로
 // 구현체를 연결해줄 애들을 여기서 결정한다.
-@Configuration
+// 수동 빈 등록방식
+//@Configuration
 public class AppConfig {
 
     @Bean
@@ -39,6 +39,5 @@ public class AppConfig {
     public DiscountPolicy getDiscountPolicy() {
         return new FixDiscountPolicy();
     }
-
 }
 
