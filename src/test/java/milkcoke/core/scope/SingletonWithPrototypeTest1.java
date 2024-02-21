@@ -9,7 +9,7 @@ import org.springframework.context.annotation.AnnotationConfigApplicationContext
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
-import javax.inject.Provider;
+import jakarta.inject.Provider;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
