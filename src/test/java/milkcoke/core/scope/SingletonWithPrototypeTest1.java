@@ -38,9 +38,6 @@ public class SingletonWithPrototypeTest1 {
 
         var clientBean2 = ac.getBean(ClientBean.class);
         assertThat(clientBean1).isNotSameAs(clientBean2);
-
-//        var count2 = clientBean2.addAndGetCount();
-//        assertThat(count2).isEqualTo(1);
     }
 
     @Component

@@ -6,11 +6,11 @@ import org.springframework.stereotype.Repository;
 import java.util.concurrent.ConcurrentHashMap;
 @Repository
 public class MemoryMemberRepository implements MemberRepository {
-    private static ConcurrentHashMap<Long, Member> store  = new ConcurrentHashMap<>();
+    private static final ConcurrentHashMap<Long, Member> store  = new ConcurrentHashMap<>();
 
     @Override
     public void save(Member member) {
-        store.put(member.getId(), member);
+        store.put(member.id(), member);
     }
 
     @Override

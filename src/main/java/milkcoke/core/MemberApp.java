@@ -14,15 +14,13 @@ public class MemberApp {
         // 메서드 이름으로 name 이 설정되어있음. (key: 메소드명, value: 생성된 객체)
         MemberService memberService = applicationContext.getBean("memberService", MemberService.class);
 
-//        MemberService memberService = new MemberServiceImpl(new MemoryMemberRepository());
-
         Member member = new Member(1L, "memberA", Grade.VIP);
         memberService.join(member);
 
         Member foundMember = memberService.findMemberById(1L);
 
-        System.out.println("Member: " + member.getName());
-        System.out.println("Found member: " + foundMember.getName());
+        System.out.println("Member: " + member.name());
+        System.out.println("Found member: " + foundMember.name());
 
     }
 }
