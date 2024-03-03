@@ -11,25 +11,22 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 
 public class MemberServiceTest {
+  private MemberService memberService;
 
-    private MemberService memberService;
-    private MemberRepository memberRepository;
+   @BeforeEach
+  public void beforeEach() {
+      MemberRepository memberRepository = new MemoryMemberRepository();
+      memberService = new MemberServiceImpl(memberRepository);
+  }
 
-    @BeforeEach
-    public void beforeEach() {
-        memberRepository = new MemoryMemberRepository();
-        memberService = new MemberServiceImpl(memberRepository);
-    }
-
-    @Test
-    void join() {
-        // given
-        Member member = new Member(1L, "memberA", Grade.VIP);
-        // when
-        memberService.join(member);
-        Member foundMember = memberService.findMemberById(1L);
-
-        // then
-        assertThat(member).isEqualTo(foundMember);
-    }
+  @Test
+  void join() {
+      // given
+      Member member = new Member(1L, "memberA", Grade.VIP);
+      // when
+      memberService.join(member);
+      Member foundMember = memberService.findMemberById(1L);
+       // then
+      assertThat(member).isEqualTo(foundMember);
+  }
 }

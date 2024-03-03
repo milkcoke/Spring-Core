@@ -1,5 +1,6 @@
 package milkcoke.core.singleton;
 
+import lombok.Getter;
 import milkcoke.core.AppConfig;
 import milkcoke.core.service.member.MemberService;
 import org.junit.jupiter.api.DisplayName;
@@ -12,14 +13,11 @@ import static org.assertj.core.api.Assertions.assertThat;
  * @returns 싱글톤 객체
  */
 public class SingletonTest {
+    // 이미 생성된 객체를 불러오기만함.
     // static -> 클래스가 메모리에 로드될 때 생성됨.
     // instance 에 미리 넣어둠. (생성자 호출 필요 X)
+    @Getter
     private static final SingletonTest instance = new SingletonTest();
-
-    // 이미 생성된 객체를 불러오기만함.
-    public static SingletonTest getInstance() {
-        return instance;
-    }
 
     // private 키워드를 통해 추가 객체 생성을 방지한다.
     private SingletonTest() {}
